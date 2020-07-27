@@ -34,10 +34,10 @@ public class AdivinarNumero {
 	}
 	
 	public void comprobarNumero(int numeroIntroducido) {		
-		if (numeroIntroducido > this.numero) {
+		if (numeroIntroducido < this.numero) {
 			this.intentos += 1;
 			AdivinarNumero_JOP.introdujoNumeroMayor();
-		}else if (numeroIntroducido < this.numero) {
+		}else if (numeroIntroducido > this.numero) {
 			this.intentos += 1;
 			AdivinarNumero_JOP.introdujoNumeroMenor();
 		}else {

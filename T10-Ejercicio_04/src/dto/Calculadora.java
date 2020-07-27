@@ -1,5 +1,4 @@
 package dto;
-import views.Calculadora_JOP;
 
 public class Calculadora {
 	
@@ -30,16 +29,41 @@ public class Calculadora {
 		this.numeros = DEFAULT_NUMEROS;
 	}
 	
-	public int calcular() {
+	public double calcular() {
 		
-		int resultado = this.numeros[0];
+		double resultado = this.numeros[0];
 		
-		for (int i = 1; i < this.numeros.length; i++) {
-
+		if(this.operador.equals("Raíz cuadrada") || this.operador.equals("Raíz cubica")) {
+			switch (this.operador) {
+				case "Raíz cuadrada":
+					resultado = (int) Math.pow(resultado, 2);
+					break;
+				case "Raíz cubica":
+					resultado = (int) Math.pow(resultado, 3);
+					break;
+			}
+		}else {
+			for (int i = 1; i < this.numeros.length; i++) {		
+				switch (this.operador) {
+					case "Suma":
+						resultado += this.numeros[i];
+						break;
+					case "Resta":
+						resultado -= this.numeros[i];	
+						break;
+					case "Multiplicación":
+						resultado *= this.numeros[i];
+						break;
+					case "Potencia":
+						resultado = (int) Math.pow(resultado, this.numeros[i]);
+						break;
+					case "División":
+						resultado /= this.numeros[i];
+						break;
+				}
+			}	
 		}
-		
 		return resultado;
-		
 	}
 	
 }
