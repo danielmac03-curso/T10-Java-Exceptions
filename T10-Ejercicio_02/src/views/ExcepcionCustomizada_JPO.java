@@ -8,9 +8,10 @@ public class ExcepcionCustomizada_JPO {
 		JOptionPane.showMessageDialog(null, "Apto para llevar motos sin limiatacion por edad?");
 	}
 	
-	public static String introducirEdad() {
+	public static int introducirEdad() {
 		String edad = JOptionPane.showInputDialog("Introduzca su edad:");
-		return edad;		
+		int edadInt = Integer.parseInt(edad);
+		return edadInt;		
 	}
 		
 	public static void mostrarMensaje(String message) {

@@ -9,6 +9,7 @@ public class Calculadora_JOP {
 		return numeroOperadores;
 	}
 	
+	//Este metodo nos permite mostar cualquier mensaje
 	public static void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(null, mensaje);
 	}

@@ -4,10 +4,7 @@ import javax.swing.JOptionPane;
 
 public class GenerarNumeroAleatorio_JPO {
 	
-	public static void comenzar() {
-		JOptionPane.showMessageDialog(null, "Generando número aleatorio...");
-	}
-	
+	//Este metodo permite mostar cualquier mensaje
 	public static void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
