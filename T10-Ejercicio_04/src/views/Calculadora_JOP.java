@@ -15,7 +15,7 @@ public class Calculadora_JOP {
 	}
 	
 	public static String introduceNumero(int indice) {
-		String numero = JOptionPane.showInputDialog("Introduzca el numero " + indice);
+		String numero = JOptionPane.showInputDialog("Introduzca el " + indice + "º numero");
 		return numero;
 	}
 	

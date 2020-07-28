@@ -24,6 +24,9 @@ public class ExcepcionCustomizada extends Exception{
 				
 		switch (this.codigoExcepcion) {
 		case 00:
+			mensaje = "Debe introducir como minimo 2";
+			break;
+		case 01:
 			mensaje = "No puedes dividir entre cero";
 			break;
 		}

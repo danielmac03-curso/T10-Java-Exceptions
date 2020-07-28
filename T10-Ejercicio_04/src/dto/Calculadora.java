@@ -1,7 +1,5 @@
 package dto;
 
-import excepcion.ExcepcionCustomizada;
-
 public class Calculadora {
 	
 	//Definir constantes
@@ -71,7 +69,7 @@ public class Calculadora {
 					resultado /= this.numeros[i];
 					break;
 				case "Potencia":
-					resultado = (int) Math.pow(resultado, this.numeros[i]);
+					resultado = (int) Math.pow(resultado, this.numeros[i]);					
 					break;
 			}	
 		}
