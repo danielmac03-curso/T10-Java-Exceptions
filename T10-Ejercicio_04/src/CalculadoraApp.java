@@ -1,7 +1,8 @@
 import javax.swing.JOptionPane;
 
 import dto.Calculadora;
-import excepcion.ExcepcionCustomizada;
+import excepcion.minTwoNumbers;
+import excepcion.cantDivideToZero;
 import views.Calculadora_JOP;
 
 public class CalculadoraApp {
@@ -27,26 +28,20 @@ public class CalculadoraApp {
 		
 		//Si el usuario selecciono una raiz ya no le preguntamos con cuantos numeros quiere operar
 		if(operacionString.equals("Raíz cuadrada") || operacionString.equals("Raíz cubica")) {
-			numOperadoresInt = 1;
+			numOperadores = "1";
 		}else {
 			numOperadores = Calculadora_JOP.numOperadores();
-			
-			//Si en algún momento el usuario introduce algun dato que no sea un numero mostrara un error y dejara de ejecutarse 
-			try {
-				//Ahora pasamos la varibale numOperadores a entero
-				numOperadoresInt = Integer.parseInt(numOperadores);
+		}
 				
-			} catch (NumberFormatException e2) {
-				Calculadora_JOP.mostrarMensaje("Debe introducir un numero");
+		//Si en algún momento el usuario introduce un dato no esperado saltara un error
+		try {
+			//Ahora pasamos la varibale numOperadores a entero
+			numOperadoresInt = Integer.parseInt(numOperadores);
+			
+			if(numOperadoresInt == 1 && !(operacionString.equals("Raíz cuadrada") || operacionString.equals("Raíz cubica"))) {
+				throw new minTwoNumbers(00);
 			}
 			
-		}
-		
-		//Seteamos el numOperadores al objeto
-		calculadora.setNumOperadores(numOperadoresInt);
-		
-		//Si en algún momento el usuario introduce algun dato que no sea un numero mostrara un error y dejara de ejecutarse 
-		try {
 			//Creamos un array de enteros y el tamaño es segun el numOperadores que hemos pedido antes
 			numeros = new int[numOperadoresInt];
 			
@@ -56,27 +51,29 @@ public class CalculadoraApp {
 				int numeroInt = Integer.parseInt(numero);
 				numeros[i] = numeroInt;
 			}	
-		} catch (NumberFormatException e) {
-			Calculadora_JOP.mostrarMensaje("Debe introducir un numero");
-		}
 			
-		//Le pasamos al objecto los numeros
-		calculadora.setNumeros(numeros);
-		
-		if(operacionString.equals("Raíz cuadrada") || operacionString.equals("Raíz cubica")) {
-			total = calculadora.calcular(true);
-		}else {
-			total = calculadora.calcular();
-		}
+			//Le pasamos al objecto los numeros para la operacion
+			calculadora.setNumeros(numeros);
+			
+			//Pasamos un paramtro boolean para utilizar el polimorfismo
+			if(operacionString.equals("Raíz cuadrada") || operacionString.equals("Raíz cubica")) {
+				total = calculadora.calcular(true);
+			}else {
+				total = calculadora.calcular();
+			}
 
-		try {
+			//Si devolviera infinity por culpa de la division, invocariamos la excepcion customizada
 			if(total != Double.POSITIVE_INFINITY) {
 				Calculadora_JOP.mostrarMensaje("El total es : " + total);
 			}else {
-				throw new ExcepcionCustomizada(01);
+				throw new cantDivideToZero(00);
 			}
-		} catch (ExcepcionCustomizada e) {
-			Calculadora_JOP.mostrarMensaje(e.getMessage());
+		} catch (NumberFormatException e1) {
+			Calculadora_JOP.mostrarMensaje("Debe introducir un numero");
+		} catch (minTwoNumbers e2) {
+			Calculadora_JOP.mostrarMensaje(e2.getMessage());
+		} catch (cantDivideToZero e3) {
+			Calculadora_JOP.mostrarMensaje(e3.getMessage());
 		}
 
 

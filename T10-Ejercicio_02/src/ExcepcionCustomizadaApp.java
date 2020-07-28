@@ -7,21 +7,22 @@ public class ExcepcionCustomizadaApp {
 		// TODO Auto-generated method stub
 		
 		//Mensaje para comenzar
-		ExcepcionCustomizada_JPO.comenzar();
+		ExcepcionCustomizada_JPO.mostrarMensaje("Apto para llevar motos sin limitacion por edad?");
 		
 		//Intenta ejecitar un codigo sino intenta capturar la excepcion
 		try {
 			//Preguntamos la edad
-			int edad = ExcepcionCustomizada_JPO.introducirEdad();
+			String edad = ExcepcionCustomizada_JPO.introducirEdad();
+			int edadInt = Integer.parseInt(edad);
 			
 			//Dependiendo de la edad lanzamos una extension o mostramos un mensaje
-			if (edad == 15) {
+			if (edadInt == 15) {
 				throw new ExcepcionCustomizada(15);
-			}else if(edad == 16) {
+			}else if(edadInt == 16) {
 				throw new ExcepcionCustomizada(16);
-			}else if(edad == 18) {
+			}else if(edadInt == 18) {
 				throw new ExcepcionCustomizada(18);
-			}else if(edad >= 20){
+			}else if(edadInt >= 20){
 				ExcepcionCustomizada_JPO.mostrarMensaje("Puede llevar motos sin limitacion por edad");
 			}	
 		} catch (NumberFormatException e1) {
@@ -31,7 +32,7 @@ public class ExcepcionCustomizadaApp {
 		}
 		
 		//Mensaje para acabar
-		ExcepcionCustomizada_JPO.acabar();		
+		ExcepcionCustomizada_JPO.mostrarMensaje("Programa terminado");
 	}
 
 }

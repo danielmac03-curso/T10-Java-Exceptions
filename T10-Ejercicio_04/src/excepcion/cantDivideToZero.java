@@ -1,18 +1,18 @@
 package excepcion;
 
-public class ExcepcionCustomizada extends Exception{
+public class cantDivideToZero extends Exception{
 	
 	//Definir atributos por defecto
 	private int codigoExcepcion;
 	
 	//Definir constructor por defecto
-	public ExcepcionCustomizada(){
+	public cantDivideToZero(){
 		super();
 		this.codigoExcepcion = 0;
 	}	
 	
 	//Definir constructor con el parametro codigoExcepcion
-	public ExcepcionCustomizada(int codigoExcepcion){
+	public cantDivideToZero(int codigoExcepcion){
 		super();
 		this.codigoExcepcion = codigoExcepcion;
 	}
@@ -20,17 +20,7 @@ public class ExcepcionCustomizada extends Exception{
 	//Dependiedno del codigoExcepcion mostramos un mensaje o otro
 	@Override
 	public String getMessage() {		
-		String mensaje = "";
-				
-		switch (this.codigoExcepcion) {
-		case 00:
-			mensaje = "Debe introducir como minimo 2";
-			break;
-		case 01:
-			mensaje = "No puedes dividir entre cero";
-			break;
-		}
-		
+		String mensaje = "No se puede dividir entre cero";
 		return mensaje;		
 	}
 

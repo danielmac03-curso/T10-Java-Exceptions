@@ -7,7 +7,7 @@ public class AdivinarNumeroApp {
 		// TODO Auto-generated method stub
 		
 		//Mostramos el mensaje de inicio
-		AdivinarNumero_JOP.empieza();
+		AdivinarNumero_JOP.mostrarMensaje("Empieza el juego, debe adivinar el numero entre el 1 y el 500");
 		
 		//Instanciamos el objeto
 		AdivinarNumero adivinar = new AdivinarNumero();

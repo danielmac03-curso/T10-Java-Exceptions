@@ -7,28 +7,21 @@ public class Calculadora {
 	
 	//Definir atributos
 	private String operador;
-	private int numOperadores;
 	private int[] numeros;
 	
 	//Constructor por defecto
 	public Calculadora() {
 		this.operador = "";
-		this.numOperadores = 0;
 		this.numeros = DEFAULT_NUMEROS;
 	}
 
 	//Constructor con el parametro operacion
 	public Calculadora(String operacion) {
 		this.operador = operacion;
-		this.numOperadores = 0;
 		this.numeros = DEFAULT_NUMEROS;
 	}
 	
 	//Setters necesarios
-	public void setNumOperadores(int numOperadores) {
-		this.numOperadores = numOperadores;
-	}
-	
 	public void setNumeros(int[] numeros) {
 		this.numeros = numeros;
 	}
