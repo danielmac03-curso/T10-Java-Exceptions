@@ -30,7 +30,7 @@ public class CalculadoraApp {
 		if(operacionString.equals("Raíz cuadrada") || operacionString.equals("Raíz cubica")) {
 			numOperadores = "1";
 		}else {
-			numOperadores = Calculadora_JOP.numOperadores();
+			numOperadores = Calculadora_JOP.preguntarInformacion("Introduzca cuantos numeros va a introducir:");
 		}
 				
 		//Si en algún momento el usuario introduce un dato no esperado saltara un error
@@ -47,7 +47,7 @@ public class CalculadoraApp {
 			
 			//Bucle para cada uno de los numeros que hemos indicado, preguntaremos al usuario, lo pasaremos a entero y lo guardamos en el array
 			for (int i = 0; i < numOperadoresInt; i++) {
-				String numero = Calculadora_JOP.introduceNumero(i+1);
+				String numero = Calculadora_JOP.preguntarInformacion("Introduzca el " + (i+1) + "º numero");
 				int numeroInt = Integer.parseInt(numero);
 				numeros[i] = numeroInt;
 			}	
