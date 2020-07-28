@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class Calculadora_JOP {
 	
 	public static String numOperadores() {
-		String numeroOperadores = JOptionPane.showInputDialog("Introduzca el numero de operadores:");
+		String numeroOperadores = JOptionPane.showInputDialog("Introduzca cuantos numeros va a introducir:");
 		return numeroOperadores;
 	}
 	

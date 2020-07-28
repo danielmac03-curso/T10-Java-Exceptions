@@ -1,5 +1,7 @@
 package dto;
 
+import excepcion.ExcepcionCustomizada;
+
 public class Calculadora {
 	
 	//Definir constantes
@@ -33,39 +35,44 @@ public class Calculadora {
 		this.numeros = numeros;
 	}
 	
-	public double calcular() {	
+	public double calcular(boolean x) {	
 		//Definir la variable fuera para poder usarla
 		double resultado = this.numeros[0];
 		
 		//Si el usuario selecciono una raiz solo haremos la operacion una vez, sino la repetiremos por cada nuemero 
-		if(this.operador.equals("Raíz cuadrada") || this.operador.equals("Raíz cubica")) {
+		switch (this.operador) {
+			case "Raíz cuadrada":
+				resultado = (int) Math.pow(resultado, 2);
+				break;
+			case "Raíz cubica":
+				resultado = (int) Math.pow(resultado, 3);
+				break;
+		}
+		
+		return resultado;
+	}
+	
+	public double calcular() {	
+		//Definir la variable fuera para poder usarla
+		double resultado = this.numeros[0];
+		
+		for (int i = 1; i < this.numeros.length; i++) {		
 			switch (this.operador) {
-				case "Raíz cuadrada":
-					resultado = (int) Math.pow(resultado, 2);
+				case "Suma":
+					resultado += this.numeros[i];
 					break;
-				case "Raíz cubica":
-					resultado = (int) Math.pow(resultado, 3);
+				case "Resta":
+					resultado -= this.numeros[i];	
 					break;
-			}	
-		}else {
-			for (int i = 1; i < this.numeros.length; i++) {		
-				switch (this.operador) {
-					case "Suma":
-						resultado += this.numeros[i];
-						break;
-					case "Resta":
-						resultado -= this.numeros[i];	
-						break;
-					case "Multiplicación":
-						resultado *= this.numeros[i];
-						break;
-					case "Potencia":
-						resultado = (int) Math.pow(resultado, this.numeros[i]);
-						break;
-					case "División":
-						resultado /= this.numeros[i];
-						break;
-				}
+				case "Multiplicación":
+					resultado *= this.numeros[i];
+					break;
+				case "División":
+					resultado /= this.numeros[i];
+					break;
+				case "Potencia":
+					resultado = (int) Math.pow(resultado, this.numeros[i]);
+					break;
 			}	
 		}
 		
