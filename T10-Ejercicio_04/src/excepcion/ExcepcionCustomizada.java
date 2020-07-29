@@ -1,8 +1,8 @@
-package exception;
+package excepcion;
 
 public class ExcepcionCustomizada extends Exception{
 	
-	//Definir atributos
+	//Definir atributos por defecto
 	private int codigoExcepcion;
 	
 	//Definir constructor por defecto
@@ -11,7 +11,7 @@ public class ExcepcionCustomizada extends Exception{
 		this.codigoExcepcion = 0;
 	}	
 	
-	//Definir constructor con el parametro codigo excepcion
+	//Definir constructor con el parametro codigoExcepcion
 	public ExcepcionCustomizada(int codigoExcepcion){
 		super();
 		this.codigoExcepcion = codigoExcepcion;
@@ -19,25 +19,24 @@ public class ExcepcionCustomizada extends Exception{
 	
 	//Dependiedno del codigoExcepcion mostramos un mensaje o otro
 	@Override
-	public String getMessage() {		
+	public String getMessage() {
+		
 		String mensaje = "";
-				
+		
 		switch (this.codigoExcepcion) {
 		case 01:
-			mensaje = "Solo puede llevar ciclomotores y cuadriciclos";
+			mensaje = "Debe introducir como minimo 2 numero";
 			break;
+
 		case 02:
-			mensaje = "Como maximo puede llevar motos de 125 cm3 y vehículos agrícolas";	
+			mensaje = "No introduzca un numero negativo";
 			break;
 		case 03:
-			mensaje = "Como maximo puede llevar turismos, motos y camiones";
-			break;
-		case 04:
-			mensaje = "No introduzca una edad en negativo";
+			mensaje = "No se puede dividir entre cero";
 			break;
 		}
 		
-		return mensaje;		
+		return mensaje;				
 	}
 
 }

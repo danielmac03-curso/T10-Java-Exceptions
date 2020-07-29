@@ -1,8 +1,7 @@
 import javax.swing.JOptionPane;
 
 import dto.Calculadora;
-import excepcion.minTwoNumbers;
-import excepcion.cantDivideToZero;
+import excepcion.*;
 import views.Calculadora_JOP;
 
 public class CalculadoraApp {
@@ -39,7 +38,9 @@ public class CalculadoraApp {
 			numOperadoresInt = Integer.parseInt(numOperadores);
 			
 			if(numOperadoresInt == 1 && !(operacionString.equals("Raíz cuadrada") || operacionString.equals("Raíz cubica"))) {
-				throw new minTwoNumbers(00);
+				throw new ExcepcionCustomizada(01);
+			}else if(numOperadoresInt < 1 && !(operacionString.equals("Raíz cuadrada") || operacionString.equals("Raíz cubica"))) {
+				throw new ExcepcionCustomizada(02);
 			}
 			
 			//Creamos un array de enteros y el tamaño es segun el numOperadores que hemos pedido antes
@@ -66,14 +67,12 @@ public class CalculadoraApp {
 			if(total != Double.POSITIVE_INFINITY) {
 				Calculadora_JOP.mostrarMensaje("El total es : " + total);
 			}else {
-				throw new cantDivideToZero(00);
+				throw new ExcepcionCustomizada(03);
 			}
 		} catch (NumberFormatException e1) {
 			Calculadora_JOP.mostrarMensaje("Debe introducir un numero");
-		} catch (minTwoNumbers e2) {
+		} catch (ExcepcionCustomizada e2) {
 			Calculadora_JOP.mostrarMensaje(e2.getMessage());
-		} catch (cantDivideToZero e3) {
-			Calculadora_JOP.mostrarMensaje(e3.getMessage());
 		}
 
 

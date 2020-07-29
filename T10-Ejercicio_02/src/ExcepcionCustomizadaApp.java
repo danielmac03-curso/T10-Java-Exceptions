@@ -17,14 +17,17 @@ public class ExcepcionCustomizadaApp {
 			
 			//Dependiendo de la edad lanzamos una extension o mostramos un mensaje
 			if (edadInt == 15) {
-				throw new ExcepcionCustomizada(15);
+				throw new ExcepcionCustomizada(01);
 			}else if(edadInt == 16) {
-				throw new ExcepcionCustomizada(16);
+				throw new ExcepcionCustomizada(02);
 			}else if(edadInt == 18) {
-				throw new ExcepcionCustomizada(18);
+				throw new ExcepcionCustomizada(03);
 			}else if(edadInt >= 20){
 				ExcepcionCustomizada_JPO.mostrarMensaje("Puede llevar motos sin limitacion por edad");
-			}	
+			}else if(edadInt < 0) {
+				throw new ExcepcionCustomizada(04);
+			}
+			
 		} catch (NumberFormatException e1) {
 			ExcepcionCustomizada_JPO.mostrarMensaje("Debe introducir un numero");
 		} catch (ExcepcionCustomizada e2) {
